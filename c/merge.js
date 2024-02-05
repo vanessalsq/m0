@@ -4,7 +4,7 @@
 // the details of the global index can be seen in the test cases.
 
 const fs = require('fs');
-const {exit} = require('process');
+// const {exit} = require('process');
 const readline = require('readline');
 
 const rl = readline.createInterface({
@@ -22,10 +22,9 @@ rl.on('line', (line) => {
 
 rl.on('close', () => {
   mergeIndices();
-  for(const [key, arr_new] of map){
-    console.log(key + ' | ' + arr_new.map(a => a.join(' ')).join(' '));
+  for (const [key, arrNew] of map) {
+    console.log(key + ' | ' + arrNew.map((a) => a.join(' ')).join(' '));
   }
-
 });
 
 const mergeIndices = () => {
@@ -33,22 +32,21 @@ const mergeIndices = () => {
   const global = process.argv[2];
   const file = fs.readFileSync(global, 'utf-8');
   const lines = file.split('\n');
-  lines.forEach(line => {
-    if(line){
-    const [key, str] = line.split(' | ');
-    const arr = str.split(' ');
-    const arr_new = [];
-    for(let i = 0; i < arr.length; i += 2){
-      arr_new.push([arr[i], arr[i+1]]);
+  lines.forEach((line) => {
+    if (line) {
+      const [key, str] = line.split(' | ');
+      const arr = str.split(' ');
+      const arrNew = [];
+      for (let i = 0; i < arr.length; i += 2) {
+        arrNew.push([arr[i], arr[i + 1]]);
+      }
+      if (map.get(key)) {
+        arrNew.push(...map.get(key));
+        arrNew.sort((a, b) => {
+          return b[1] - a[1];
+        });
+      }
+      map.set(key, arrNew);
     }
-    if(map.get(key)){
-      arr_new.push(...map.get(key));
-      arr_new.sort((a, b) => {
-        return b[1]-a[1];
-      });
-    }
-      map.set(key, arr_new);
-  }
   });
-}
-
+};

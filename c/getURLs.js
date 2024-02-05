@@ -15,7 +15,7 @@ try {
   throw new Error('invalid url');
 }
 
-if(url.endsWith('html/')) {
+if (url.endsWith('html/')) {
   url = url.substring(0, url.lastIndexOf('/'));
 }
 
