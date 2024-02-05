@@ -1,22 +1,18 @@
 #!/usr/bin/env node
 
 const readline = require('readline');
-const {JSDOM} = require('jsdom');
-const {URL} = require('url');
+const { JSDOM } = require('jsdom');
+const { URL } = require('url');
 
 // Example usage:
-const baseURL = process.argv[2] + '/';
+const baseURL = process.argv[2];
 
 // check for validity
 let url;
 try {
-  url = new URL(baseURL).href;
+  url = new URL(baseURL);
 } catch (err) {
   throw new Error('invalid url');
-}
-
-if(url.endsWith('html/')) {
-  url = url.substring(0, url.lastIndexOf('/'));
 }
 
 const rl = readline.createInterface({
@@ -33,7 +29,6 @@ rl.on('line', (line) => {
 
   document.querySelectorAll('a').forEach((a) => {
     const href = a.getAttribute('href');
-    // console.log(a.href, '=====', baseURL);
     if (href) {
       const resolved = new URL(href, url).toString();
       res.add(resolved);

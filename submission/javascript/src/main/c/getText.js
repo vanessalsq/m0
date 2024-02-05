@@ -2,7 +2,7 @@
 
 // Extract text from a web page
 
-const {convert} = require('html-to-text');
+const { convert } = require('html-to-text');
 const readline = require('readline');
 
 const rl = readline.createInterface({

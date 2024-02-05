@@ -8,10 +8,12 @@ var natural = require('natural');
 var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  terminal: false,
+  terminal: false
 });
 
-rl.on('line', function(line) {
+let output = '';
+
+rl.on('line', function (line) {
   // TODO some code
   const stem = natural.PorterStemmer.stem(line);
   console.log(stem);
