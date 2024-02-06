@@ -1,7 +1,6 @@
-WELCOME TO CS1380 SIMPLE LINKS
+MY BOOK COLLECTION
 
-Check out Some stuff [level_3a/index.html].
-
-Check out Some more stuff [level_3b/index.html].
-
-© 2023 CS1380. All rights reserved.
+ * The Picture of Dorian Gray by Oscar Wilde [static/book1.txt]
+ * The Iliad by Homer [static/book2.txt]
+ * The Adventures of Sherlock Holmes [static/book3.txt]
+   
